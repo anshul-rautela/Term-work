@@ -23,7 +23,7 @@ void insertEnd(struct node**ll,int data){
     iter->next=temp;
 }
 void display(struct node*ll){
-    if(!ll) printf("list is empty");
+    if(!ll) printf("list is empty\n");
     struct node*iter=ll;//iterator
     while(iter){
         printf("%d->",iter->data);
@@ -36,8 +36,8 @@ void split(struct node*ll){
     int pos =1;
     struct node*oddTail;
     struct node*evenTail;
-    struct node*oddHead;
-    struct node*evenHead;
+    struct node*oddHead=NULL;
+    struct node*evenHead=NULL;
     while(ll){
         if(pos%2!=0){
             if(pos==1){
@@ -69,14 +69,30 @@ void split(struct node*ll){
 }
 int main(){
     struct node*ll=NULL;
-    int choise=0;
-    printf("Enter the linked list, -1 to end\n");
-    while(1){
-            scanf("%d",&choise);
-            if(choise==-1) break;
-            insertEnd(&ll,choise);
+    int choice;
+do {
+    printf("Enter:\n1. Insert into linked list\n2. Split linked list\n3. Exit\n");
+    scanf("%d", &choice);
+    switch (choice) {
+        case 1:
+            printf("Enter the linked list, -1 to end\n");
+            while (1) {
+                int value;
+                scanf("%d", &value);
+                if (value == -1) break;
+                insertEnd(&ll, value);
+            }
+            break;
+        case 2:
+            split(ll);
+            break;
+        case 3:
+            printf("Exiting...\n");
+            break;
+        default:
+            printf("Invalid input.\n");
     }
-    split(ll);
-}
+} while (choice != 3);
 
+}
 // traverse a linked list with pos variable (which calculates the position of node) keep incrementing the pos as we traverse the Linked list if pos is odd then add the courent node's data to oddList else add to Evenlist

@@ -39,10 +39,7 @@ void display(struct node*root){
 int main(){
     struct node*tree = create(1);
     insert(&tree,2);
-    insert(&tree,3);
-    insert(&tree,4);
-    insert(&tree,5);
-    insert(&tree,8);
-    insert(&tree,10);
+    insert(&tree,2);
+    
     display(tree);
 }
